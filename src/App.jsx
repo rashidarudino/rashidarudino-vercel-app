@@ -6,8 +6,10 @@ function App() {
   return (
     <Canvas
       camera={{
-        fov: 64,
-        position: [2.3, 1.5, 2.3],
+        fov: 75, // Increase the FOV to zoom out
+        position: [3, 2, 15], // Move the camera further away
+        near: 0.1, // Adjust as needed
+        far: 5000, // Adjust as needed
       }}
     >
       <Experience />

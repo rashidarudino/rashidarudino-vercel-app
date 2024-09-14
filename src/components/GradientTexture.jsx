@@ -21,8 +21,8 @@ export const createGradientTexture = (color1, color2) => {
 };
 
 // Predefined gradients
-export const orangeGradient = createGradientTexture('#2cff79', '#fbd886');
-export const blueGradient = createGradientTexture('#0fa1f9', '#ffffff');
+export const orangeGradient = createGradientTexture('#ffffff', '#fabf17');
+export const blueGradient = createGradientTexture('#71c0c3', '#ffffff');
 
 // '#ce9178'
 // '#3b82f6'

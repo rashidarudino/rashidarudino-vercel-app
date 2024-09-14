@@ -59,11 +59,12 @@ export const Overlay = () => {
               <Chip label='Modeling, drawing, and animating' className='m-2' />
             </div>
             <p className='text-center animate-pulse mt-4 px-16'>
-              I am flexible and keen on staying up-to-date with the latest trends
+              I am flexible and keen on staying up-to-date with the latest
+              trends
             </p>
           </div>
         </Section>
-        <Section>
+        <Section right>
           <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
             About me
           </h1>
@@ -93,24 +94,20 @@ export const Overlay = () => {
           <br />
           <p className='text-center'>
             I transitioned to online tutoring with Cluey Learning. Fast forward,
-            and I’m now seasoned with four years of programming experience and
-            tutoring children.
+            and I’m now seasoned🧂 with four years of experience in programming
+            and tutoring children. 😁
           </p>
           <br />
-          <p className='text-center'>
-            This has influenced my interest in things that are bite-sized,
-            vivid, and colorful.
-          </p>
         </Section>
         <Section right>
-          <h1 className='text-3xl absolute -mt-20 font-bold text-center'>
+          <h1 className='text-3xl absolute -mt-20 animate-bounce font-bold text-center'>
             This is my toolbox
           </h1>
           <SkillBento />
         </Section>
         <Section>
           <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
-            Get in Touch
+            Get in touch
           </h1>
           <div className='container p-4'>
             <a
@@ -153,7 +150,7 @@ export const Overlay = () => {
         <Section right>
           {/* Title */}
           <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
-            Download Resume
+            Resume
           </h1>
 
           {/* Balloon-style Message */}
@@ -178,6 +175,27 @@ export const Overlay = () => {
             <FaDownload className='mr-2' />
             Download Resume
           </a>
+        </Section>
+        <Section>
+          <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
+            Project Gallery
+          </h1>
+          <p className='p-4 text-center'>
+            Browse my alternate site here:{' '}
+            <a
+              href='https://www.toycube.shop/'
+              className='text-blue-900 hover:text-[#38a1e6] font-semibold underline'
+              target='_blank'
+              rel='noopener noreferrer'
+            >
+              Toycube
+            </a>
+          </p>
+          <iframe
+            className='ml-10 justify-center h-full'
+            src='https://www.toycube.shop/art'
+            title='Embedded React App'
+          ></iframe>
         </Section>
       </div>
     </Scroll>
