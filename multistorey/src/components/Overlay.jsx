@@ -1,20 +1,28 @@
-import { Scroll, useScroll } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
-import { useState } from "react";
-
+import { Scroll, useScroll } from '@react-three/drei';
+import { SkillBento } from './Bento/SkillBento';
+import ContactForm from './ContactForm';
+import {
+  FaLinkedin,
+  FaGithub,
+  FaEnvelope,
+  FaPhone,
+  FaDownload,
+} from 'react-icons/fa';
+import { useSnackbar } from 'notistack';
+import Chip from '@mui/material/Chip';
 const Section = (props) => {
   return (
     <section
       className={`h-screen flex flex-col justify-center p-10 ${
-        props.right ? "items-end" : "items-start"
+        props.right ? 'items-end' : 'items-start'
       }`}
       style={{
         opacity: props.opacity,
       }}
     >
-      <div className="w-1/2 flex items-center justify-center">
-        <div className="max-w-sm w-full">
-          <div className="bg-white  rounded-lg px-8 py-12">
+      <div className='w-1/2 flex items-center justify-center'>
+        <div className='max-w-sm w-full'>
+          <div className='bg-white  rounded-lg px-1 py-10'>
             {props.children}
           </div>
         </div>
@@ -25,67 +33,151 @@ const Section = (props) => {
 
 export const Overlay = () => {
   const scroll = useScroll();
-  const [opacityFirstSection, setOpacityFirstSection] = useState(1);
-  const [opacitySecondSection, setOpacitySecondSection] = useState(1);
-  const [opacityLastSection, setOpacityLastSection] = useState(1);
+  const { enqueueSnackbar } = useSnackbar();
 
-  useFrame(() => {
-    setOpacityFirstSection(1 - scroll.range(0, 1 / 3));
-    setOpacitySecondSection(scroll.curve(1 / 3, 1 / 3));
-    setOpacityLastSection(scroll.range(2 / 3, 1 / 3));
-  });
+  const handleDownload = (event) => {
+    console.log('snackbar?');
+    enqueueSnackbar("Downloaded Rashida's resume!", { variant: 'success' });
+  };
 
   return (
     <Scroll html>
-      <div class="w-screen">
-        <Section opacity={opacityFirstSection}>
-          <h1 className="font-semibold font-serif text-2xl">
-            Hello, I'm Wawa Sensei
-          </h1>
-          <p className="text-gray-500">Welcome to my beautiful portfolio</p>
-          <p className="mt-3">I know:</p>
-          <ul className="leading-9">
-            <li>🧑‍💻 How to code</li>
-            <li>🧑‍🏫 How to learn</li>
-            <li>📦 How to deliver</li>
-          </ul>
-          <p className="animate-bounce  mt-6">↓</p>
+      <div className='w-screen'>
+        <Section>
+          <div className='container'>
+            <h1 className='text-4xl text-center animate-bounce mt-6'>Hi!</h1>
+            <h2 className='text-3xl font-bold text-center'>I'm Rashida</h2>
+            <div className='flex justify-center my-4'>
+              Programmer | Digital Artist
+            </div>
+            <div className='flex flex-wrap justify-start'>
+              <Chip label='Creating websites' className='m-2' />
+              <Chip label='Building PowerApps' className='m-2' />
+              <Chip label='Documenting and blogging' className='m-2' />
+              <Chip label='Working with APIs' className='m-2' />
+              <Chip label='Handling esp32s and serial data' className='m-2' />
+              <Chip label='Modeling, drawing, and animating' className='m-2' />
+            </div>
+            <p className='text-center animate-pulse mt-4 px-16'>
+              I am flexible and keen on staying up-to-date with the latest trends
+            </p>
+          </div>
         </Section>
-        <Section right opacity={opacitySecondSection}>
-          <h1 className="font-semibold font-serif text-2xl">
-            Here are my skillsets 🔥
+        <Section>
+          <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
+            About me
           </h1>
-          <p className="text-gray-500">PS: I never test</p>
-          <p className="mt-3">
-            <b>Frontend 🚀</b>
+          <p className='text-center'>
+            I first started
+            <a
+              href='https://www.toycube.shop/art'
+              className='text-blue-400 hover:text-blue-600'
+            >
+              {' '}
+              art commissions
+            </a>{' '}
+            on DeviantArt at 15. Before graduating highschool, since I’m a big
+            foodie and wanted to dive in, I jumped into hospitality and started
+            working as an Ogalo Crew Member in 2019 while I was doing my VET
+            course. I ended up graduating with a pretty awesome ATAR of 96.9.
           </p>
-          <ul className="leading-9">
-            <li>ReactJS</li>
-            <li>React Native</li>
-            <li>VueJS</li>
-            <li>Tailwind</li>
-          </ul>
-          <p className="mt-3">
-            <b>Backend 🔬</b>
-          </p>
-          <ul className="leading-9">
-            <li>NodeJS</li>
-            <li>tRPC</li>
-            <li>NestJS</li>
-            <li>PostgreSQL</li>
-          </ul>
-          <p className="animate-bounce  mt-6">↓</p>
         </Section>
-        <Section opacity={opacityLastSection}>
-          <h1 className="font-semibold font-serif text-2xl">
-            🤙 Call me maybe?
+        <Section right>
+          <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
+            ...and a bit more
           </h1>
-          <p className="text-gray-500">
-            I'm very expensive but you won't regret it
+          <p className='text-center'>
+            During my freshman year at UNSW Kensington, I kicked off my tutoring
+            adventure with CSEducation for a three months until COVID hit.
           </p>
-          <p className="mt-6 p-3 bg-slate-200 rounded-lg">
-            📞 <a href="tel:(+42) 4242-4242-424242">(+42) 4242-4242-424242</a>
+          <br />
+          <p className='text-center'>
+            I transitioned to online tutoring with Cluey Learning. Fast forward,
+            and I’m now seasoned with four years of programming experience and
+            tutoring children.
           </p>
+          <br />
+          <p className='text-center'>
+            This has influenced my interest in things that are bite-sized,
+            vivid, and colorful.
+          </p>
+        </Section>
+        <Section right>
+          <h1 className='text-3xl absolute -mt-20 font-bold text-center'>
+            This is my toolbox
+          </h1>
+          <SkillBento />
+        </Section>
+        <Section>
+          <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
+            Get in Touch
+          </h1>
+          <div className='container p-4'>
+            <a
+              href='mailto:rashidarudino@gmail.com'
+              className='flex items-center space-x-2 text-red-400 hover:text-red-600'
+            >
+              <FaEnvelope size={32} className='text-2xl' />
+              <p>rashidarudino@gmail.com</p>
+            </a>
+            <a
+              href='https://www.linkedin.com/in/rrudino'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex items-center space-x-2 text-blue-400 hover:text-blue-600'
+            >
+              <FaLinkedin size={32} className='text-2xl' />
+              <p>rrudino</p>
+            </a>
+            <a
+              href='https://github.com/rashidarudino'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex items-center space-x-2 text-slate-400 hover:text-slate-600'
+            >
+              <FaGithub size={32} className='text-2xl' />
+              <p>rashidarudino</p>
+            </a>
+            <a
+              href='tel:+61492815361'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='flex items-center space-x-2 text-orange-400 hover:text-orange-600'
+            >
+              <FaPhone size={32} className='text-2xl' />
+              <p>+61 492 815 362</p>
+            </a>
+          </div>
+          <ContactForm />
+        </Section>
+        <Section right>
+          {/* Title */}
+          <h1 className='text-3xl font-bold -mt-20 text-gray-800 mb-6'>
+            Download Resume
+          </h1>
+
+          {/* Balloon-style Message */}
+          <div className='bg-gray-100 w-full max-w-md text-center p-4 rounded-lg shadow-md'>
+            <p className='text-lg font-bold text-gray-800 mb-2'>
+              Get to know me better!
+            </p>
+            <p className='text-sm text-gray-600'>
+              Download my resume to see a detailed account of my skills,
+              experience, and achievements. Feel free to reach out for any
+              inquiries!
+            </p>
+          </div>
+
+          {/* Download Button */}
+          <a
+            href='/rashida-rudino-resume-2024.pdf' // Replace with your resume file path
+            download='rashida-rudino-resume-2024.pdf'
+            onClick={handleDownload}
+            className='mt-6 flex justify-center items-center bg-green-500 text-white font-semibold py-2 px-4 rounded-md shadow-md hover:bg-green-600 transition duration-300'
+          >
+            <FaDownload className='mr-2' />
+            Download Resume
+          </a>
         </Section>
       </div>
     </Scroll>
